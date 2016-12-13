@@ -1,0 +1,20 @@
+<% if @questions.any?() %>
+  <h3>Here are all the questions:</h3>
+
+  <ul>
+    <% @questions.each() do |question| %>
+      <li><%= question.description() %>
+        <p>Parent Survey: </p><a href="/surveys/<%= question.survey_id() %>"><%= Survey.find(question.survey_id()).title() %></a>
+        <a href="/questions/<%= question.id() %>/edit">Update this question</a></li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no questions!</p>
+<% end %>
+
+<div class="container">
+  <a href="/surveys">btn-sur</a>
+  <a href="/questions">btn-qust</a>
+  <a href="/">Home</a>
+</div>
